@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rohit Rana | Portfolio</title>
+  <style>
+    /* ==== RESET ==== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 50px;
+    }
+    header h1 {
+      font-size: 3em;
+      font-weight: bold;
+    }
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+      color: #00ffb3;
+    }
+    #tagline span {
+      border-right: 2px solid #fff;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #00ffb3;
+    }
+
+    /* ==== PROJECTS ==== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background: #1c1c1c;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: #00ffb3;
+    }
+
+    /* ==== CONTACT ==== */
+    a {
+      color: #00ffb3;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hi, I'm Rohit 👋</h1>
+    <p id="tagline"></p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I’m an aspiring Machine Learning Engineer who loves Python, Pandas, and AI.  
+    Currently building projects like smart assistants 🤖 and exploring automation 🚀</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="projects" id="projects"></div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>📧 <a href="mailto:rrohit8366@gmail.com">rrohit8366@gmail.com</a></p>
+
+    <p>🔗 <a href="https://github.com/RohitRana8366" target="_blank">GitHub</a> | 
+       🔗 <a href="www.linkedin.com/in/rohit-rana-790aa6337"
+
+    target="_blank">LinkedIn</a></p>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Rohit Rana |GitHub Pages</p>
+  </footer>
+
+  <script>
+    // ==== Typewriter Automation for Tagline ====
+    const text = "Aspiring Machine Learning Engineer | AI & Automation Enthusiast";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("tagline").innerHTML = text.substring(0, i+1) + "<span></span>";
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    typeWriter();
+
+    // ==== Auto Projects ====
+    const projectList = [
+      { title: "AI Voice Assistant", desc: "Personal AI assistant with voice commands, GUI, and system control." },
+      { title: "Data Analysis with Pandas", desc: "Explored datasets, cleaned data, and visualized insights." },
+      { title: "Quiz App (Java)", desc: "Online quiz application using advanced Java for semester project." },
+      { title: "Portfolio Automation", desc: "This creative, automated GitHub Pages portfolio site." }
+    ];
+    const projectContainer = document.getElementById("projects");
+    projectList.forEach(p => {
+      let card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>`;
+      projectContainer.appendChild(card);
+    });
+
+    // ==== Auto Year ====
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
